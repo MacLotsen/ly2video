@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ly2video"
+dynamic = ["version"]
+description = "Vertical LilyPond score videos with a highlight that follows the music"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+authors = [{ name = "Erik Nijenhuis" }]
+requires-python = ">=3.10"
+dependencies = [
+    "mido>=1.3",
+    "cairosvg>=2.7",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: Multimedia :: Video",
+]
+
+[project.scripts]
+ly2video = "ly2video.cli:run"
+
+[tool.setuptools.dynamic]
+version = { attr = "ly2video.__version__" }
+
+[tool.setuptools.package-data]
+ly2video = ["*.ily"]
